@@ -1,36 +1,78 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>QR Code Event Platform - Ian Winston</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KCS Delegate Registration</title>
 </head>
 <body>
-    <h1>QR Code Event Platform for KCS</h1>
-    <p>Hello! My name is Ian Winston Obonyo Wandago. 
-       I create <b>QR code–based event platforms</b> that make delegate 
-       registration, access control, and attendance tracking 
-       simple and efficient.</p>
+  <h2>KCS Delegate Registration Form</h2>
+  <form id="registrationForm">
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required><br><br>
+    
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select><br><br>
+    
+    <label for="address">Address:</label>
+    <textarea id="address" name="address" rows="4" cols="30" required></textarea><br><br>
+    
+    <label for="telephone">Telephone:</label>
+    <input type="tel" id="telephone" name="telephone" required><br><br>
+    
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required><br><br>
+    
+    <label for="course">Specialization/Interest Area:</label>
+    <input type="text" id="course" name="course" required><br><br>
+    
+    <button type="submit">Register</button>
+    <button type="button" onclick="cancel()">Cancel</button>
+  </form>
 
-    <h2>What I Can Do</h2>
-    <ol>
-        <li>Personalized QR codes for each delegate, faculty, and exhibitor</li>
-        <li>Real-time attendance tracking</li>
-        <li>Multi-hall access control (main and breakout sessions)</li>
-        <li>Exhibitor and sponsor analytics</li>
-        <li>Post-event attendance reports</li>
-    </ol>
+  <h3>Registered Delegates (In Memory)</h3>
+  <ul id="delegateList"></ul>
 
-    <h2>Past Experience</h2>
-    <p>I successfully managed delegate registration at the 
-       <b>42nd KCS Annual Scientific Congress</b>, overseeing over 600 participants. 
-       I ensured smooth entry and accurate real-time attendance reporting.</p>
+  <script>
+    const delegates = [];
 
-    <h2>Gallery</h2>
-    <p>Here are some photos from my work:</p>
-    <img src="_SDN5660.jpg" alt="registration team discussing" width="300" height="200">
-    <img src="_SDN5596.jpg" alt="QR code scanning in action" width="300" height="200">
-    <h2>Contact Me</h2>
-    <p>Email: winstonwandago@gmail.com<br>
-       Phone: 0718 162717<br>
-       Location: Nairobi, Kenya</p>
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const delegate = {
+        name: document.getElementById('name').value,
+        dob: document.getElementById('dob').value,
+        gender: document.getElementById('gender').value,
+        address: document.getElementById('address').value,
+        telephone: document.getElementById('telephone').value,
+        email: document.getElementById('email').value,
+        course: document.getElementById('course').value
+      };
+
+      delegates.push(delegate);
+      updateDelegateList();
+      this.reset();
+    });
+
+    function updateDelegateList() {
+      const list = document.getElementById('delegateList');
+      list.innerHTML = "";
+      delegates.forEach((d, index) => {
+        list.innerHTML += `<li>${index + 1}. ${d.name} - ${d.email} - ${d.course}</li>`;
+      });
+    }
+
+    function cancel() {
+      window.history.back();
+    }
+  </script>
 </body>
 </html>
-
