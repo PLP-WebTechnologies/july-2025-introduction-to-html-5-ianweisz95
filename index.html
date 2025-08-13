@@ -1,78 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KCS Delegate Registration</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Comprehensive information about Knowledge-Centered Service (KCS) principles and benefits." />
+    <title>Knowledge-Centered Service (KCS) Overview</title>
+    <meta name="keywords" content="KCS, Knowledge-Centered Service, knowledge management, customer support, service excellence" />
+    <meta name="author" content="Your Name" />
 </head>
 <body>
-  <h2>KCS Delegate Registration Form</h2>
-  <form id="registrationForm">
-    <label for="name">Full Name:</label>
-    <input type="text" id="name" name="name" required><br><br>
-    
-    <label for="dob">Date of Birth:</label>
-    <input type="date" id="dob" name="dob" required><br><br>
-    
-    <label for="gender">Gender:</label>
-    <select id="gender" name="gender" required>
-      <option value="">Select Gender</option>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-      <option value="Other">Other</option>
-    </select><br><br>
-    
-    <label for="address">Address:</label>
-    <textarea id="address" name="address" rows="4" cols="30" required></textarea><br><br>
-    
-    <label for="telephone">Telephone:</label>
-    <input type="tel" id="telephone" name="telephone" required><br><br>
-    
-    <label for="email">Email Address:</label>
-    <input type="email" id="email" name="email" required><br><br>
-    
-    <label for="course">Specialization/Interest Area:</label>
-    <input type="text" id="course" name="course" required><br><br>
-    
-    <button type="submit">Register</button>
-    <button type="button" onclick="cancel()">Cancel</button>
-  </form>
+    <header role="banner">
+        <h1>Welcome to KCS Insights</h1>
+        <nav role="navigation" aria-label="Primary navigation">
+            <ul>
+                <li><a href="#about" accesskey="a">About KCS</a></li>
+                <li><a href="#principles" accesskey="p">KCS Principles</a></li>
+                <li><a href="#contact" accesskey="c">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <h3>Registered Delegates (In Memory)</h3>
-  <ul id="delegateList"></ul>
+    <main role="main">
+        <section id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">About Knowledge-Centered Service (KCS)</h2>
+            <p>Knowledge-Centered Service (KCS) is a methodology that integrates knowledge creation and maintenance into the customer support process, improving service efficiency and customer satisfaction.</p>
+        </section>
 
-  <script>
-    const delegates = [];
+        <section id="principles" aria-labelledby="principles-heading">
+            <h2 id="principles-heading">KCS Principles</h2>
+            <article aria-labelledby="principle1-heading">
+                <h3 id="principle1-heading">Capture Knowledge as a By-Product of Work</h3>
+                <p>KCS encourages documenting solutions and knowledge while resolving problems, reducing duplication and enhancing information availability.</p>
+            </article>
+            <article aria-labelledby="principle2-heading">
+                <h3 id="principle2-heading">Evolve Content Based on Demand and Usage</h3>
+                <p>Knowledge articles are continually improved based on user feedback and real-world application, ensuring accuracy and relevance.</p>
+            </article>
+            <article aria-labelledby="principle3-heading">
+                <h3 id="principle3-heading">Create a Knowledge-Centered Culture</h3>
+                <p>Organizations adopting KCS foster collaboration and shared responsibility to optimize knowledge sharing and service delivery.</p>
+            </article>
+        </section>
 
-    document.getElementById('registrationForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+        <section id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Get in Touch</h2>
+            <form action="#" method="post" aria-describedby="contact-instructions">
+                <p id="contact-instructions">Please fill out the form below to contact us for more information about KCS.</p>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required aria-required="true" />
 
-      const delegate = {
-        name: document.getElementById('name').value,
-        dob: document.getElementById('dob').value,
-        gender: document.getElementById('gender').value,
-        address: document.getElementById('address').value,
-        telephone: document.getElementById('telephone').value,
-        email: document.getElementById('email').value,
-        course: document.getElementById('course').value
-      };
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required aria-required="true" />
 
-      delegates.push(delegate);
-      updateDelegateList();
-      this.reset();
-    });
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
 
-    function updateDelegateList() {
-      const list = document.getElementById('delegateList');
-      list.innerHTML = "";
-      delegates.forEach((d, index) => {
-        list.innerHTML += `<li>${index + 1}. ${d.name} - ${d.email} - ${d.course}</li>`;
-      });
-    }
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
 
-    function cancel() {
-      window.history.back();
-    }
-  </script>
+    <footer role="contentinfo">
+        <p>&copy; 2025 KCS Insights. All rights reserved.</p>
+    </footer>
 </body>
 </html>
